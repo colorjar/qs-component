@@ -64,15 +64,7 @@ export default function(component) {
         }
 
         setQState(newState, callback) {
-            const qstate = {};
-
-            if(typeof newState === 'function') {
-                const prevState = Object.assign({}, this.state.qstate);
-                Object.assign(qstate, this.getDefaultQuery(), this.state.qstate,
-                    newState.call(this, prevState, this.props));
-            } else {
-                Object.assign(qstate, this.getDefaultQuery(), this.state.qstate, newState);
-            }
+            const qstate = this._extractQState(newState);
 
             const _callback = () => {
                 this.pushQuery(this._cleanupQueryString(qstate));
@@ -83,6 +75,18 @@ export default function(component) {
             };
 
             this.setState({qstate}, _callback);
+        }
+
+        _extractQState(newState) {
+            const qstate = {};
+
+            if(typeof newState === 'function') {
+                const prevState = Object.assign({}, this.state.qstate);
+                Object.assign(qstate, this.getDefaultQuery(), this.state.qstate,
+                    newState.call(this, prevState, this.props));
+            } else {
+                Object.assign(qstate, this.getDefaultQuery(), this.state.qstate, newState);
+            }
         }
 
         _cleanupQueryString(query) {
