@@ -15,6 +15,7 @@ You can run the test suite with the `npm run test` command.
 
 # Usage
 qs-component relies on two simple concepts:
+
 1. `this.state.qstate` will reflect the current values in the query string.
 2. `this.setQState()` provides the same semantics as setState, yet functions exclusively on `this.state.qstate`
 
