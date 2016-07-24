@@ -1,11 +1,12 @@
 {
   "name": "qs-component",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "React component for tracking query string values as state",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha --colors --compilers js:babel-core/register",
-    "build": "babel -d lib/ src/"
+    "build": "NODE_ENV=es5 babel --loose -d lib/ src/ && NODE_ENV=es6 babel --loose -d es6/ src/",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "babel-plugin-transform-class-properties": "^6.11.5",
     "babel-plugin-transform-export-extensions": "^6.8.0",
     "babel-preset-es2015-loose": "^7.0.0",
+    "babel-preset-es2015-native-modules": "^6.9.2",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-2": "^6.11.0",
     "enzyme": "^2.4.1",
@@ -41,14 +43,29 @@
     "react-router": "^2.6.0"
   },
   "babel": {
-    "plugins": [
-      "transform-class-properties",
-      "transform-export-extensions"
-    ],
-    "presets": [
-      "stage-2",
-      "es2015-loose",
-      "react"
-    ]
+    "env": {
+      "es5": {
+        "presets": [
+          "es2015",
+          "react",
+          "stage-2"
+        ],
+        "plugins": [
+          "transform-class-properties",
+          "transform-export-extensions"
+        ]
+      },
+      "es6": {
+        "presets": [
+          "es2015-native-modules",
+          "react",
+          "stage-2"
+        ],
+        "plugins": [
+          "transform-class-properties",
+          "transform-export-extensions"
+        ]
+      }
+    }
   }
 }
