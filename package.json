@@ -1,0 +1,54 @@
+{
+  "name": "qs-component",
+  "version": "0.1.0",
+  "description": "React component for tracking query string values as state",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha --colors --compilers js:babel-core/register",
+    "build": "babel -d lib/ src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colorjar/qs-component.git"
+  },
+  "keywords": [
+    "react",
+    "querystring"
+  ],
+  "author": "Edward Drapkin <EdwardDrapkin@gmail.com> (http://github.com/EdwardDrapkin/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/colorjar/qs-component/issues"
+  },
+  "homepage": "https://github.com/colorjar/qs-component#readme",
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-plugin-transform-class-properties": "^6.11.5",
+    "babel-plugin-transform-export-extensions": "^6.8.0",
+    "babel-preset-es2015-loose": "^7.0.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-2": "^6.11.0",
+    "enzyme": "^2.4.1",
+    "jsdom": "^9.4.1",
+    "mocha": "^2.5.3",
+    "react": "^15.2.1",
+    "react-addons-test-utils": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "should": "^10.0.0",
+    "sinon": "^1.17.4"
+  },
+  "peerDependencies": {
+    "react-router": "^2.6.0"
+  },
+  "babel": {
+    "plugins": [
+      "transform-class-properties",
+      "transform-export-extensions"
+    ],
+    "presets": [
+      "stage-2",
+      "es2015-loose",
+      "react"
+    ]
+  }
+}
