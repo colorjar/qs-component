@@ -49,7 +49,7 @@ Query string values are strictly *opt-in*.  Other query string values will be si
 2. `replaceQuery(queryString)` - replace the current query string with the provided one.  The query string is expected to be replaced, not merged.  This should replace the most recent history entry, not create a new one.
 3. `pushQuery(queryString)` - add a new history entry with the provided query string.  The user should be able to 'back' from this transition, but not `replaceQuery()`. 
 
-A simple react-router implementation is as simple as this: 
+A basic react-router implementation is as simple as this: 
 
     class Example extends QStateComponent {
         getQuery() {
