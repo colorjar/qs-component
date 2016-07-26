@@ -14,32 +14,33 @@ Currently we only offer support for [react-router](https://github.com/reactjs/re
 You can run the test suite with the `npm run test` command.
 
 ## Usage
-qs-component relies on two simple concepts:
+1. Extend the `QStateComponent` implementation for your router.
+2. Opt-in to query string parameters by specifying them `getDefaultState()`.
+3. Access query string values in `this.state.qstate` and modify them with `this.setQState()`.
 
-1. `this.state.qstate` will reflect the current values in the query string.
-2. `this.setQState()` provides the same semantics as setState, yet functions exclusively on `this.state.qstate`
+That's it! It can be as simple as this: 
+              
+    class Example extends QStateComponent {
+        getDefaultQuery() {
+            return {
+                page: 1
+            };
+        }
+                    
+        // this will return {page:1} until you change the QS page value in your browser
+        // regardless of what else you put in the query string
+        render() {
+            return <div>
+                {JSON.stringify(this.state.qstate)}
+            </div>;
+        }
+    }
+    
 
 Query string values are strictly *opt-in*.  Other query string values will be silently ignored and your component will not get re-rendered for query string updates (unless your router remounts it).  To opt-in to a query string value, overload `getDefaultQuery()` with a map of keys to their query string default values.  Defaults will be removed from the query string transparently without creating a browser history entry, so users can't get caught in an infinite back-button-redirects-me-forever loop and we can cull noise like `page=1` from the query string.
 
-A simple example:
     
-    class Example extends QStateComponent {
-      getDefaultQuery() {
-        return {
-          page: 1
-        }
-      }
-      
-      // this will return {page:1} until you change the QS page value in your browser
-      // regardless of what else you put in the query string
-      render() {
-          <div>
-              {JSON.stringify(this.state.qstate)}
-          </div>
-      }
-    }
-    
-### Extending QStateComponent
+### Implementing a router by extending QStateComponent
 `class QStateComponent` provides three methods that must be overloaded to couple with a router.  The fourth abstract method, `getDefaultQuery()` is expected to be implemented by end users.
 
 1. `getQuery()` - returns the current query string, or set of 'query' values you extract from your route.  The format should be {key: value}.  Currently only simple types are supported.
