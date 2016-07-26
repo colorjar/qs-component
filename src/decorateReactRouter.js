@@ -1,6 +1,6 @@
 import React from 'react';
 import decorate from './decorate';
-import {locationShape, routerShape} from 'react-router/es6/PropTypes';
+import {locationShape, routerShape} from 'react-router/lib/PropTypes';
 
 export default function(component) {
     return class extends decorate(component) {
