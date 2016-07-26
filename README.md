@@ -2,7 +2,9 @@
 React component for seamless query string state values.
 
 ## Motivation
-One of the frequent tasks with creating Javascript apps is managing browser history for users.  A common approach is to keep the most relevant values in the query string; this library provides binding query string values seamlessly with React component state.  As well as providing a simple interface for coupling to any router, we also offer a react-router implementation, but would gladly support your router.  If you'd like to see support for your router, please open an issue and let us know!   
+One of the frequent tasks with creating Javascript apps is managing browser history for users.  A common approach is to keep the most relevant values in the query string; as we developed more and more pages with React, we found ourselves frequently mapping query string values to React component state values more or less directly, so we developed a component to do it.
+
+`qs-component` creates a seamless data binding to a `state.qstate` object that transparently reflects the current query string value.
 
 ## Implementations
 Currently we only offer support for [react-router](https://github.com/reactjs/react-router).  If you'd like to see your router supported, please let us know!
