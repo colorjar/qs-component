@@ -27,7 +27,7 @@ export default function(component) {
         }
 
         getQuery() {
-            return this.props.location.query;
+            return typeof this.props.location.query ? this.props.location.query : {};
         }
 
         replaceQuery(query) {

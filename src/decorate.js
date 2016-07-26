@@ -52,13 +52,13 @@ export default function(component) {
             const defaults = this.getDefaultQuery();
             const query = this.getQuery();
 
-            this.setState({qstate: Object.assign({}, defaults, query)}, () => {
+            this.setState({qstate: {...defaults, ...query}}, () => {
                 if(Object.keys(query).filter(k => defaults[k] === query[k]).length > 0) {
                     this.replaceQuery(this._cleanupQueryString(this.state.qstate));
                 }
             });
 
-            if(super.hasOwnProperty('componentWillMount')) {
+            if(typeof super.componentWillMount === 'function') {
                 super.componentWillMount.call(this);
             }
         }
@@ -78,15 +78,12 @@ export default function(component) {
         }
 
         _extractQState(newState) {
-            const qstate = {};
-
-            if(typeof newState === 'function') {
-                const prevState = Object.assign({}, this.state.qstate);
-                Object.assign(qstate, this.getDefaultQuery(), this.state.qstate,
-                    newState.call(this, prevState, this.props));
-            } else {
-                Object.assign(qstate, this.getDefaultQuery(), this.state.qstate, newState);
-            }
+            // 😎
+            return {
+                ...this.getDefaultQuery(),
+                ...this.state.qstate,
+                ...(typeof newState === 'function' ? newState.call(this, this.state.qstate, this.props) : newState)
+            };
         }
 
         _cleanupQueryString(query) {
