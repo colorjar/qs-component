@@ -22,8 +22,8 @@ export default function(component) {
             }
         }
 
-        componentWillReceiveProps() {
-            this.setState({qstate: this.getQuery()});
+        componentWillReceiveProps(props) {
+            this.setState({qstate: props.location.query || {}});
         }
 
         getQuery() {
