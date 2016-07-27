@@ -1,6 +1,7 @@
 import React from 'react';
 import decorate from './decorate';
-import {locationShape, routerShape} from 'react-router/lib/PropTypes';
+import PropTypes from 'react-router/lib/PropTypes';
+const {locationShape, routerShape} = PropTypes;
 
 export default function(component) {
     return class extends decorate(component) {
@@ -12,18 +13,24 @@ export default function(component) {
             router: routerShape
         };
 
+        ___callbacks = [];
+
         setQState(newState, callback) {
             const qstate = this._extractQState(newState);
 
             this.pushQuery(this._cleanupQueryString(qstate));
 
             if(typeof callback === 'function') {
-                callback.call(this);
+                this.___callbacks.push(callback);
             }
         }
 
         componentWillReceiveProps(props) {
-            this.setState({qstate: props.location.query || {}});
+            this.setState({qstate: props.location.query || {}}, () => {
+                while(this.___callbacks.length) {
+                    this.___callbacks.pop().call(this);
+                }
+            });
         }
 
         getQuery() {

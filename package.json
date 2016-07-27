@@ -1,6 +1,6 @@
 {
   "name": "qs-component",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React component for tracking query string values as state",
   "main": "lib/index.js",
   "scripts": {
