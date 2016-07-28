@@ -1,16 +1,18 @@
 import React from 'react';
 import decorate from './decorate';
-import PropTypes from 'react-router/lib/PropTypes';
-const {locationShape, routerShape} = PropTypes;
+
+import {locationShape, routerShape} from 'react-router/lib/PropTypes';
+const location = locationShape,
+    router = routerShape;
 
 export default function(component) {
     return class extends decorate(component) {
         static propTypes = {
-            location: locationShape
+            location
         };
 
         static contextTypes = {
-            router: routerShape
+            router
         };
 
         ___callbacks = [];
