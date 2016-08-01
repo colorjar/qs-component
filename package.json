@@ -1,6 +1,6 @@
 {
   "name": "qs-component",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "React component for tracking query string values as state",
   "main": "lib/index.js",
   "scripts": {
@@ -27,24 +27,24 @@
     "babel-plugin-transform-class-properties": "^6.11.5",
     "babel-plugin-transform-export-extensions": "^6.8.0",
     "babel-preset-es2015-loose": "^7.0.0",
-    "babel-preset-es2015-native-modules": "^6.9.2",
+    "babel-preset-es2015-loose-native-modules": "^1.0.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-2": "^6.11.0",
     "enzyme": "^2.4.1",
-    "jsdom": "^9.4.1",
-    "mocha": "^2.5.3",
-    "react": "^15.2.1",
-    "react-addons-test-utils": "^15.2.1",
-    "react-dom": "^15.2.1",
-    "should": "^10.0.0",
-    "sinon": "^1.17.4",
     "eslint": "~3.1.1",
     "eslint-config-airbnb": "~9.0.1",
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-class-property": "1.0.0",
     "eslint-plugin-import": "~1.11.0",
     "eslint-plugin-jsx-a11y": "~2.0.1",
-    "eslint-plugin-react": "~5.2.2"
+    "eslint-plugin-react": "~5.2.2",
+    "jsdom": "^9.4.1",
+    "mocha": "^2.5.3",
+    "react": "^15.2.1",
+    "react-addons-test-utils": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "should": "^10.0.0",
+    "sinon": "^1.17.4"
   },
   "peerDependencies": {
     "react-router": "^2.6.0"
@@ -53,7 +53,7 @@
     "env": {
       "es5": {
         "presets": [
-          "es2015",
+          "es2015-loose",
           "react",
           "stage-2"
         ],
@@ -64,7 +64,7 @@
       },
       "es6": {
         "presets": [
-          "es2015-native-modules",
+          "es2015-loose-native-modules",
           "react",
           "stage-2"
         ],
