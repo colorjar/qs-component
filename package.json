@@ -1,6 +1,6 @@
 {
   "name": "qs-component",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "React component for tracking query string values as state",
   "main": "lib/index.js",
   "scripts": {
@@ -48,31 +48,5 @@
   },
   "peerDependencies": {
     "react-router": "^2.6.0"
-  },
-  "babel": {
-    "env": {
-      "es5": {
-        "presets": [
-          "es2015-loose",
-          "react",
-          "stage-2"
-        ],
-        "plugins": [
-          "transform-class-properties",
-          "transform-export-extensions"
-        ]
-      },
-      "es6": {
-        "presets": [
-          "es2015-loose-native-modules",
-          "react",
-          "stage-2"
-        ],
-        "plugins": [
-          "transform-class-properties",
-          "transform-export-extensions"
-        ]
-      }
-    }
   }
 }

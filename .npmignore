@@ -87,4 +87,5 @@ jspm_packages
 # CUSTOM
 test/
 .gitignore
+.babelrc
 .npmignore
